@@ -83,8 +83,6 @@
         .admin-tab-btn.active { background-color: #4f46e5 !important; color: white !important; box-shadow: 0 0 15px rgba(79, 70, 229, 0.5); }
         .opt-btn { border-width: 2px; }
         .opt-btn:hover { border-color: rgba(139, 92, 246, 0.6); background: rgba(79, 70, 229, 0.2); }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -204,7 +202,7 @@
                 </div>
 
                 <div id="quiz-q-image-wrap" class="hidden w-full max-w-2xl mx-auto rounded-2xl overflow-hidden bg-slate-950 border-2 border-indigo-500/30 flex justify-center items-center shadow-xl p-2 relative z-10">
-                    <img id="quiz-q-image" src="" alt="صورة السؤال" class="max-h-64 object-contain rounded-xl">
+                    <img id="quiz-q-image" src="" alt="صورة السؤال" class="max-h-64 object-contain rounded-lg">
                 </div>
 
                 <!-- FOR OBJECTIVE OPTIONS -->
@@ -312,7 +310,8 @@
                     </div>
                 </div>
 
-                <div class="flex gap-2 overflow-x-auto pb-3 border-b border-indigo-500/30 text-sm font-bold hide-scrollbar">
+                <!-- تم إصلاح شريط الأزرار باستخدام flex-wrap لضمان ظهور كل الأزرار بدون الحاجة لشريط تمرير -->
+                <div class="flex flex-wrap gap-2 pb-3 border-b border-indigo-500/30 text-sm font-bold">
                     <button type="button" onclick="switchAdminTab('settings')" id="admin-tab-btn-settings" class="admin-tab-btn active px-4 py-2.5 rounded-xl bg-indigo-600 text-white whitespace-nowrap cursor-pointer transition"><i class="fa-solid fa-sliders ml-1"></i> الإعدادات والمصفوفة</button>
                     <button type="button" onclick="switchAdminTab('curriculum')" id="admin-tab-btn-curriculum" class="admin-tab-btn px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 whitespace-nowrap cursor-pointer transition"><i class="fa-solid fa-book-open ml-1"></i> المناهج</button>
                     <button type="button" onclick="switchAdminTab('questions')" id="admin-tab-btn-questions" class="admin-tab-btn px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 whitespace-nowrap cursor-pointer transition"><i class="fa-solid fa-file-circle-question ml-1"></i> إدارة البنك</button>
@@ -423,19 +422,19 @@
                 <!-- ADMIN CURRICULUM -->
                 <div id="admin-tab-curriculum" class="admin-tab-content space-y-5 hidden text-right">
                     <div class="bg-slate-900/80 p-5 rounded-2xl border border-indigo-500/30">
-                        <h4 class="font-bold text-indigo-300 mb-3"><i class="fa-solid fa-layer-group ml-1"></i> 1. إدارة وحدات المنهج</h4>
+                        <h4 class="font-bold text-base text-indigo-300 mb-3"><i class="fa-solid fa-layer-group ml-1"></i> 1. إدارة وحدات المنهج</h4>
                         <div class="flex gap-2 mb-4">
-                            <input type="text" id="new-unit-name" placeholder="اسم الوحدة الجديدة..." class="flex-1 bg-slate-800 border-slate-700 p-2.5 rounded-xl text-sm text-white focus:border-indigo-500 outline-none">
-                            <button onclick="adminAddUnit()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 rounded-xl text-sm font-bold transition">إضافة وحدة</button>
+                            <input type="text" id="new-unit-name" placeholder="اسم الوحدة الجديدة..." class="flex-1 bg-slate-800 border-slate-700 p-3 rounded-xl text-sm text-white focus:border-indigo-500 outline-none">
+                            <button onclick="adminAddUnit()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 rounded-xl text-sm font-bold transition">إضافة</button>
                         </div>
                         <div id="admin-units-list" class="flex flex-wrap gap-2"></div>
                     </div>
                     <div class="bg-slate-900/80 p-5 rounded-2xl border border-indigo-500/30">
-                        <h4 class="font-bold text-indigo-300 mb-3"><i class="fa-solid fa-book-open ml-1"></i> 2. إدارة الدروس للوحدة المحددة</h4>
-                        <select id="curric-unit-select" class="w-full bg-slate-800 border-slate-700 p-2.5 rounded-xl text-sm text-white mb-4 outline-none" onchange="renderAdminCurriculumLessons()"></select>
+                        <h4 class="font-bold text-base text-indigo-300 mb-3"><i class="fa-solid fa-book-open ml-1"></i> 2. إدارة الدروس للوحدة المحددة</h4>
+                        <select id="curric-unit-select" class="w-full bg-slate-800 border-slate-700 p-3 rounded-xl text-sm text-white mb-4 outline-none" onchange="renderAdminCurriculumLessons()"></select>
                         <div class="flex gap-2 mb-4">
-                            <input type="text" id="new-lesson-name" placeholder="اسم الدرس الجديد..." class="flex-1 bg-slate-800 border-slate-700 p-2.5 rounded-xl text-sm text-white outline-none">
-                            <button onclick="adminAddLesson()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 rounded-xl text-sm font-bold transition">إضافة درس</button>
+                            <input type="text" id="new-lesson-name" placeholder="اسم الدرس الجديد..." class="flex-1 bg-slate-800 border-slate-700 p-3 rounded-xl text-sm text-white outline-none">
+                            <button onclick="adminAddLesson()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 rounded-xl text-sm font-bold transition">إضافة</button>
                         </div>
                         <div id="admin-lessons-list" class="flex flex-wrap gap-2"></div>
                     </div>
@@ -791,10 +790,9 @@
             reader.readAsDataURL(file);
         }
 
-        // --- المناهج والإعدادات الافتراضية ---
         const DEFAULT_CONFIG = {
             testId: 'exam_soc_prim5_v1_final', title: 'اختبار الصف الخامس الابتدائي', grade: 'الصف الخامس', subject: 'الدراسات الاجتماعية', teacherName: 'مس رشا دياب', teacherPhone: '01205333472', bannerUrl: NEW_BANNER_URL, durationMinutes: 30, status: 'published', adminPass: '330399', isRandomOrder: true,
-            qTargets: {}, // سيتم تهيئتها ككائنات لـ (المتوسط، الصعب، التعجيزي)
+            qTargets: {},
             units: ['الوحدة الأولى', 'الوحدة الثانية', 'الوحدة الثالثة'],
             lessons: { 'الوحدة الأولى': ['الدرس الأول', 'الدرس الثاني', 'الدرس الثالث'], 'الوحدة الثانية': ['الدرس الأول', 'الدرس الثاني'], 'الوحدة الثالثة': ['الدرس الأول'] }
         };
@@ -1473,7 +1471,7 @@
                         count++;
                     }
                 });
-                if (count > 0) { document.getElementById('admin-bulk-input').value = ''; await saveDatabase(); document.getElementById('filter-q-unit').value = unit; updateFilterLesson(); document.getElementById('filter-q-lesson').value = lesson; renderAdminQuestions(); updateSmartCounters(); showToast(`تم استيراد ${count} سؤال من JSON بنجاح!`, 'fa-check'); switchAdminTab('questions'); } else { showToast('لم يتم العثور على أسئلة صالحة.', 'fa-ban', true); }
+                if (count > 0) { document.getElementById('admin-bulk-input').value = ''; await saveDatabase(); document.getElementById('filter-q-unit').value = unit; updateFilterLesson(); document.getElementById('filter-q-lesson').value = lesson; renderAdminQuestions(); updateSmartCounters(); showToast(`تم استيراد ${count} سؤال بنجاح!`, 'fa-check'); switchAdminTab('questions'); } else { showToast('لم يتم العثور على أسئلة صالحة.', 'fa-ban', true); }
             } catch (e) { showToast('خطأ في صيغة JSON!', 'fa-bug', true); }
         }
 
@@ -1653,7 +1651,7 @@
             });
             tableHTML += '</tbody></table>';
             tableHTML += `<div class="footer">تم استخراج التقرير بواسطة: ${DB.config.teacherName} | التاريخ: ${new Date().toLocaleString('ar-EG')}</div>`;
-            printWin.document.write(tableHTML); printWin.document.write('</body></html>'); printWin.document.close(); printWin.focus();
+            printWin.document.write(tableHTML); printWin.document.close(); printWin.focus();
             setTimeout(() => { printWin.print(); printWin.close(); }, 800);
         }
         
