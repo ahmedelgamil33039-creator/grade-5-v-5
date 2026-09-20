@@ -3,29 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة مس رشا دياب - اختبارات تفاعلية شاملة (V4.1)</title>
+    <title>منصة مس رشا دياب - اختبارات تفاعلية شاملة</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Tajawal Font -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        /* --- الألوان المتداخلة والخلفية المتحركة --- */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
         body {
-            font-family: 'Tajawal', sans-serif; user-select: none; -webkit-user-select: none;
+            font-family: 'Tajawal', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
             background: linear-gradient(-45deg, #1e1b4b, #4338ca, #312e81, #0f172a, #4c1d95, #1e1b4b);
-            background-size: 400% 400%; animation: gradientBG 15s ease infinite; min-height: 100vh; color: #f8fafc; overflow-x: hidden; position: relative;
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            color: #f8fafc;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        .floating-emoji { position: fixed; font-size: 2.5rem; opacity: 0.15; z-index: 0; pointer-events: none; animation: floatEmoji 20s linear infinite alternate; }
-        @keyframes floatEmoji { 0% { transform: translateY(0) rotate(0deg) scale(0.8); } 50% { transform: translateY(-50vh) rotate(180deg) scale(1.2); } 100% { transform: translateY(-100vh) rotate(360deg) scale(0.8); } }
-        .e-1 { bottom: -10%; left: 10%; animation-duration: 25s; } .e-2 { bottom: -10%; right: 20%; animation-duration: 22s; animation-delay: 2s; }
-        .e-3 { bottom: -10%; left: 40%; animation-duration: 28s; animation-delay: 5s; } .e-4 { bottom: -10%; right: 40%; animation-duration: 20s; animation-delay: 1s; }
-        .e-5 { bottom: -10%; left: 70%; animation-duration: 26s; animation-delay: 3s; } .e-6 { bottom: -10%; right: 5%; animation-duration: 24s; animation-delay: 4s; }
+        /* --- الإيموشنات والعناصر العائمة --- */
+        .floating-emoji {
+            position: fixed;
+            font-size: 2.5rem;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+            animation: floatEmoji 20s linear infinite alternate;
+        }
+        @keyframes floatEmoji {
+            0% { transform: translateY(0) rotate(0deg) scale(0.8); }
+            50% { transform: translateY(-50vh) rotate(180deg) scale(1.2); }
+            100% { transform: translateY(-100vh) rotate(360deg) scale(0.8); }
+        }
+        .e-1 { bottom: -10%; left: 10%; animation-duration: 25s; }
+        .e-2 { bottom: -10%; right: 20%; animation-duration: 22s; animation-delay: 2s; }
+        .e-3 { bottom: -10%; left: 40%; animation-duration: 28s; animation-delay: 5s; }
+        .e-4 { bottom: -10%; right: 40%; animation-duration: 20s; animation-delay: 1s; }
+        .e-5 { bottom: -10%; left: 70%; animation-duration: 26s; animation-delay: 3s; }
+        .e-6 { bottom: -10%; right: 5%; animation-duration: 24s; animation-delay: 4s; }
 
-        .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid rgba(99, 102, 241, 0.3); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(99, 102, 241, 0.1); }
-        .glass-modal { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(139, 92, 246, 0.5); box-shadow: 0 0 50px rgba(99, 102, 241, 0.2); }
+        /* --- تأثير الزجاج (Glassmorphism) --- */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(99, 102, 241, 0.1);
+        }
+        .glass-modal {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            box-shadow: 0 0 50px rgba(99, 102, 241, 0.2);
+        }
         
-        .btn-3d { transition: all 0.2s ease-out; transform: translateY(0); box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4); }
+        .btn-3d {
+            transition: all 0.2s ease-out;
+            transform: translateY(0);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+        }
         .btn-3d:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(79, 70, 229, 0.6); }
         .btn-3d:active { transform: translateY(1px); }
         .text-glow { text-shadow: 0 0 25px rgba(139, 92, 246, 0.8); }
@@ -34,24 +81,31 @@
         .btn-opt-correct { background: rgba(16, 185, 129, 0.85) !important; border-color: #10b981 !important; color: #ffffff !important; box-shadow: 0 0 30px rgba(16, 185, 129, 0.6) !important; }
         .btn-opt-wrong { background: rgba(239, 68, 68, 0.85) !important; border-color: #ef4444 !important; color: #ffffff !important; box-shadow: 0 0 30px rgba(239, 68, 68, 0.6) !important; }
         .admin-tab-btn.active { background-color: #4f46e5 !important; color: white !important; box-shadow: 0 0 15px rgba(79, 70, 229, 0.5); }
-        .opt-btn { border-width: 2px; } .opt-btn:hover { border-color: rgba(139, 92, 246, 0.6); background: rgba(79, 70, 229, 0.2); }
-        .hide-scrollbar::-webkit-scrollbar { display: none; } .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .opt-btn { border-width: 2px; }
+        .opt-btn:hover { border-color: rgba(139, 92, 246, 0.6); background: rgba(79, 70, 229, 0.2); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <!-- الإيموشنات المتحركة -->
-    <div class="floating-emoji e-1">🚀</div><div class="floating-emoji e-2">💡</div><div class="floating-emoji e-3">🌟</div>
-    <div class="floating-emoji e-4">🧠</div><div class="floating-emoji e-5">📚</div><div class="floating-emoji e-6">🏆</div>
+    <!-- الإيموشنات المتحركة في الخلفية -->
+    <div class="floating-emoji e-1">🚀</div>
+    <div class="floating-emoji e-2">💡</div>
+    <div class="floating-emoji e-3">🌟</div>
+    <div class="floating-emoji e-4">🧠</div>
+    <div class="floating-emoji e-5">📚</div>
+    <div class="floating-emoji e-6">🏆</div>
 
     <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 transform -translate-y-20 opacity-0 pointer-events-none px-6 py-3 rounded-2xl glass-card flex items-center gap-3 border shadow-2xl">
-        <i id="toast-icon" class="text-xl text-indigo-400"></i><span id="toast-msg" class="text-sm font-bold wrap-safe"></span>
+        <i id="toast-icon" class="text-xl text-indigo-400"></i>
+        <span id="toast-msg" class="text-sm font-bold wrap-safe"></span>
     </div>
 
-    <!-- التوسيع المتزن -->
+    <!-- التوسيع المتزن: Container بعرض مناسب -->
     <div class="flex-1 flex flex-col justify-center items-center p-3 sm:p-6 w-full max-w-[96%] lg:max-w-4xl xl:max-w-5xl mx-auto relative z-10">
 
-        <!-- SCREEN 1: HOME -->
+        <!-- SCREEN 1: HOME & LOGIN -->
         <section id="screen-home" class="w-full space-y-6">
             <div class="glass-card rounded-3xl p-6 sm:p-8 text-center relative overflow-hidden border border-indigo-500/40">
                 <div class="flex justify-between items-center mb-6">
@@ -79,7 +133,9 @@
                         <div class="md:col-span-3">
                             <label class="block text-sm font-bold text-indigo-300 mb-2">اسم الطالب:</label>
                             <div class="relative">
-                                <select id="select-student" class="w-full bg-slate-800 text-white font-bold p-3.5 rounded-2xl border-2 border-indigo-500/40 focus:outline-none focus:border-indigo-400 transition text-sm appearance-none cursor-pointer shadow-md"><option value="">-- اختر اسمك من القائمة --</option></select>
+                                <select id="select-student" class="w-full bg-slate-800 text-white font-bold p-3.5 rounded-2xl border-2 border-indigo-500/40 focus:outline-none focus:border-indigo-400 transition text-sm appearance-none cursor-pointer shadow-md">
+                                    <option value="">-- اختر اسمك من القائمة --</option>
+                                </select>
                                 <i class="fa-solid fa-chevron-down absolute left-5 top-1/2 -translate-y-1/2 text-indigo-400 pointer-events-none text-sm"></i>
                             </div>
                         </div>
@@ -101,7 +157,8 @@
 
                     <div class="pt-3">
                         <button type="button" onclick="handleStartClick()" class="w-full btn-3d bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:to-purple-500 text-white font-black py-4 rounded-2xl text-lg sm:text-xl flex items-center justify-center gap-3 border border-indigo-400/50 cursor-pointer shadow-[0_0_20px_rgba(99,102,241,0.5)]">
-                            <i class="fa-solid fa-rocket text-yellow-300 text-xl sm:text-2xl animate-bounce"></i><span>انطلق وابدأ الاختبار</span>
+                            <i class="fa-solid fa-rocket text-yellow-300 text-xl sm:text-2xl animate-bounce"></i>
+                            <span>انطلق وابدأ الاختبار</span>
                         </button>
                     </div>
                 </div>
@@ -112,42 +169,72 @@
         <section id="screen-quiz" class="w-full space-y-4 hidden">
             <div class="glass-card rounded-2xl p-4 flex flex-wrap justify-between items-center border border-indigo-500/30 gap-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-indigo-600 to-fuchsia-600 flex items-center justify-center text-white font-bold shadow-lg flex-shrink-0 text-xl"><i class="fa-solid fa-book-open"></i></div>
-                    <div class="overflow-hidden"><div class="text-xs sm:text-sm text-indigo-300 truncate" id="quiz-header-teacher">مس رشا دياب</div><div class="text-sm sm:text-base font-bold text-white truncate" id="quiz-header-student">طالب</div></div>
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-indigo-600 to-fuchsia-600 flex items-center justify-center text-white font-bold shadow-lg flex-shrink-0 text-xl">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div class="overflow-hidden">
+                        <div class="text-xs sm:text-sm text-indigo-300 truncate" id="quiz-header-teacher">مس رشا دياب</div>
+                        <div class="text-sm sm:text-base font-bold text-white truncate" id="quiz-header-student">طالب</div>
+                    </div>
                 </div>
+
                 <div class="flex items-center gap-3 flex-shrink-0 w-full sm:w-auto justify-end">
-                    <div class="bg-red-900/40 text-red-300 border border-red-500/50 px-4 py-2 rounded-xl font-mono font-bold text-sm sm:text-base flex items-center gap-2 shadow-[0_0_15px_rgba(239,68,68,0.2)]"><i class="fa-solid fa-clock animate-pulse text-red-400"></i><span id="quiz-timer">29:59</span></div>
-                    <div class="bg-indigo-900/40 text-indigo-200 border border-indigo-500/50 px-4 py-2 rounded-xl font-bold text-sm sm:text-base shadow-inner"><span id="quiz-question-counter">السؤال 1 من 40</span></div>
+                    <div class="bg-red-900/40 text-red-300 border border-red-500/50 px-4 py-2 rounded-xl font-mono font-bold text-sm sm:text-base flex items-center gap-2 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+                        <i class="fa-solid fa-clock animate-pulse text-red-400"></i>
+                        <span id="quiz-timer">29:59</span>
+                    </div>
+                    <div class="bg-indigo-900/40 text-indigo-200 border border-indigo-500/50 px-4 py-2 rounded-xl font-bold text-sm sm:text-base shadow-inner">
+                        <span id="quiz-question-counter">السؤال 1 من 40</span>
+                    </div>
                 </div>
             </div>
 
             <div class="glass-card rounded-3xl p-5 sm:p-8 space-y-6 border border-indigo-500/40 relative overflow-hidden">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-indigo-500/10 blur-[40px] rounded-full pointer-events-none"></div>
+
                 <div class="flex items-center justify-between relative z-10">
                     <span class="px-4 py-2 rounded-xl text-xs sm:text-sm font-black shadow-lg transition bg-amber-500/20 text-amber-300 border border-amber-500/40" id="quiz-q-type">سؤال</span>
                     <span class="text-xs sm:text-sm font-bold text-indigo-300 bg-slate-900/50 px-4 py-2 rounded-xl border border-slate-700 shadow-inner">الدرجة: <span id="quiz-q-points" class="text-white text-base">1</span></span>
                 </div>
-                <div class="w-full py-4 text-center relative z-10"><h2 id="quiz-q-text" class="text-xl sm:text-2xl lg:text-3xl font-black text-white leading-relaxed wrap-safe">نص السؤال...</h2></div>
+
+                <div class="w-full py-4 text-center relative z-10">
+                    <h2 id="quiz-q-text" class="text-xl sm:text-2xl lg:text-3xl font-black text-white leading-relaxed wrap-safe">
+                        نص السؤال...
+                    </h2>
+                </div>
+
                 <div id="quiz-q-image-wrap" class="hidden w-full max-w-2xl mx-auto rounded-2xl overflow-hidden bg-slate-950 border-2 border-indigo-500/30 flex justify-center items-center shadow-xl p-2 relative z-10">
                     <img id="quiz-q-image" src="" alt="صورة السؤال" class="max-h-64 object-contain rounded-xl">
                 </div>
 
+                <!-- FOR OBJECTIVE OPTIONS -->
                 <div id="quiz-options-container" class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 pt-3 relative z-10"></div>
-                
+
+                <!-- FOR ESSAY / PUZZLE QUESTION INPUT -->
                 <div id="quiz-essay-container" class="hidden space-y-3 pt-3 relative z-10">
                     <label class="block text-sm font-bold text-indigo-300">إجابتك المفصلة:</label>
                     <textarea id="essay-student-input" rows="5" placeholder="اكتب إجابتك أو استنتاجك هنا بوضوح..." class="w-full bg-slate-900/90 border-2 border-indigo-500/40 p-4 rounded-2xl text-sm sm:text-base text-white focus:outline-none focus:border-indigo-400 leading-relaxed wrap-safe shadow-inner transition"></textarea>
                 </div>
 
                 <div id="quiz-explanation-box" class="hidden bg-slate-900/95 border-2 border-indigo-500/50 p-5 sm:p-6 rounded-2xl space-y-3 text-right shadow-2xl mt-5 relative z-10">
-                    <div class="flex items-center gap-2 text-base sm:text-lg font-bold text-indigo-300" id="quiz-explanation-title"><i class="fa-solid fa-lightbulb text-amber-400 text-xl"></i> التفسير والشرح:</div>
+                    <div class="flex items-center gap-2 text-base sm:text-lg font-bold text-indigo-300" id="quiz-explanation-title">
+                        <i class="fa-solid fa-lightbulb text-amber-400 text-xl"></i> التفسير والشرح:
+                    </div>
                     <p class="text-sm sm:text-base text-slate-200 leading-relaxed wrap-safe bg-slate-950 p-4 rounded-xl border border-slate-800" id="quiz-explanation-body"></p>
-                    <button type="button" onclick="goToNextQuestion()" class="w-full mt-4 bg-gradient-to-r from-indigo-600 to-fuchsia-600 hover:from-indigo-500 hover:to-fuchsia-500 text-white font-bold py-3.5 rounded-xl text-base flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(139,92,246,0.4)] transition cursor-pointer"><span>الانتقال للسؤال التالي</span><i class="fa-solid fa-arrow-left"></i></button>
+                    <button type="button" onclick="goToNextQuestion()" class="w-full mt-4 bg-gradient-to-r from-indigo-600 to-fuchsia-600 hover:from-indigo-500 hover:to-fuchsia-500 text-white font-bold py-3.5 rounded-xl text-base flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(139,92,246,0.4)] transition cursor-pointer">
+                        <span>الانتقال للسؤال التالي</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
                 </div>
 
                 <div class="pt-5 border-t border-indigo-500/30 flex justify-between items-center relative z-10">
-                    <button type="button" onclick="confirmExitQuiz()" class="text-indigo-300 hover:text-red-400 text-sm font-bold px-4 py-2 rounded-xl transition cursor-pointer bg-slate-900/50 border border-transparent hover:border-red-500/30"><i class="fa-solid fa-flag-checkered ml-1"></i> إنهاء الاختبار</button>
-                    <button id="btn-next-essay" type="button" onclick="submitEssayAndNext()" class="hidden btn-3d bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold px-6 py-3 rounded-xl text-sm flex items-center gap-2 shadow-lg transition cursor-pointer"><span>حفظ الإجابة والتالي</span><i class="fa-solid fa-check"></i></button>
+                    <button type="button" onclick="confirmExitQuiz()" class="text-indigo-300 hover:text-red-400 text-sm font-bold px-4 py-2 rounded-xl transition cursor-pointer bg-slate-900/50 border border-transparent hover:border-red-500/30">
+                        <i class="fa-solid fa-flag-checkered ml-1"></i> إنهاء الاختبار
+                    </button>
+                    <button id="btn-next-essay" type="button" onclick="submitEssayAndNext()" class="hidden btn-3d bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold px-6 py-3 rounded-xl text-sm flex items-center gap-2 shadow-lg transition cursor-pointer">
+                        <span>حفظ الإجابة والتالي</span>
+                        <i class="fa-solid fa-check"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -157,7 +244,9 @@
             <div class="glass-card rounded-3xl p-6 sm:p-10 text-center border border-indigo-500/40 space-y-6 relative overflow-hidden">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-emerald-500/10 blur-[50px] rounded-full pointer-events-none"></div>
 
-                <div id="result-status-icon" class="w-20 h-20 sm:w-28 sm:h-28 rounded-3xl mx-auto flex items-center justify-center text-4xl sm:text-5xl shadow-[0_0_30px_rgba(0,0,0,0.3)] bg-indigo-500/20 text-indigo-300 border-2 border-indigo-500/40 relative z-10"><i class="fa-solid fa-award"></i></div>
+                <div id="result-status-icon" class="w-20 h-20 sm:w-28 sm:h-28 rounded-3xl mx-auto flex items-center justify-center text-4xl sm:text-5xl shadow-[0_0_30px_rgba(0,0,0,0.3)] bg-indigo-500/20 text-indigo-300 border-2 border-indigo-500/40 relative z-10">
+                    <i class="fa-solid fa-award"></i>
+                </div>
 
                 <div class="relative z-10">
                     <h2 id="result-headline" class="text-2xl sm:text-4xl font-black text-white mb-2 wrap-safe text-glow">نتيجة الاختبار</h2>
@@ -171,10 +260,22 @@
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 text-right relative z-10 max-w-4xl mx-auto">
-                    <div class="bg-emerald-900/30 border border-emerald-500/30 p-4 rounded-2xl shadow-inner"><span class="text-xs sm:text-sm text-emerald-400 block font-bold mb-1">الإجابات الصحيحة</span><span class="text-2xl sm:text-3xl font-black text-white font-mono" id="result-stat-correct">0</span></div>
-                    <div class="bg-red-900/30 border border-red-500/30 p-4 rounded-2xl shadow-inner"><span class="text-xs sm:text-sm text-red-400 block font-bold mb-1">الإجابات الخاطئة</span><span class="text-2xl sm:text-3xl font-black text-white font-mono" id="result-stat-wrong">0</span></div>
-                    <div class="bg-amber-900/30 border border-amber-500/30 p-4 rounded-2xl shadow-inner"><span class="text-xs sm:text-sm text-amber-400 block font-bold mb-1">غير مجاب</span><span class="text-2xl sm:text-3xl font-black text-white font-mono" id="result-stat-unanswered">0</span></div>
-                    <div class="bg-indigo-900/30 border border-indigo-500/30 p-4 rounded-2xl shadow-inner"><span class="text-xs sm:text-sm text-indigo-300 block font-bold mb-1">إجمالي الأسئلة</span><span class="text-2xl sm:text-3xl font-black text-white font-mono" id="result-stat-total">0</span></div>
+                    <div class="bg-emerald-900/30 border border-emerald-500/30 p-4 rounded-2xl shadow-inner">
+                        <span class="text-xs sm:text-sm text-emerald-400 block font-bold mb-1">الإجابات الصحيحة</span>
+                        <span class="text-2xl sm:text-3xl font-black text-white font-mono" id="result-stat-correct">0</span>
+                    </div>
+                    <div class="bg-red-900/30 border border-red-500/30 p-4 rounded-2xl shadow-inner">
+                        <span class="text-xs sm:text-sm text-red-400 block font-bold mb-1">الإجابات الخاطئة</span>
+                        <span class="text-2xl sm:text-3xl font-black text-white font-mono" id="result-stat-wrong">0</span>
+                    </div>
+                    <div class="bg-amber-900/30 border border-amber-500/30 p-4 rounded-2xl shadow-inner">
+                        <span class="text-xs sm:text-sm text-amber-400 block font-bold mb-1">غير مجاب</span>
+                        <span class="text-2xl sm:text-3xl font-black text-white font-mono" id="result-stat-unanswered">0</span>
+                    </div>
+                    <div class="bg-indigo-900/30 border border-indigo-500/30 p-4 rounded-2xl shadow-inner">
+                        <span class="text-xs sm:text-sm text-indigo-300 block font-bold mb-1">إجمالي الأسئلة</span>
+                        <span class="text-2xl sm:text-3xl font-black text-white font-mono" id="result-stat-total">0</span>
+                    </div>
                 </div>
 
                 <div class="text-right space-y-4 pt-6 border-t border-indigo-500/30 relative z-10 max-w-5xl mx-auto">
@@ -193,12 +294,21 @@
             <div class="glass-card rounded-3xl p-4 sm:p-6 md:p-8 border border-indigo-500/40 space-y-6 relative z-10">
                 <div class="flex flex-wrap justify-between items-center gap-4 pb-4 border-b border-indigo-500/30">
                     <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-lg"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <div><h2 class="text-xl sm:text-2xl font-black text-white text-glow">لوحة الإدارة الشاملة (V4)</h2><p class="text-xs sm:text-sm text-indigo-300 mt-1">المصفوفة، المناهج، التوليد العشوائي، والألغاز</p></div>
+                        <div class="w-14 h-14 bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-lg">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl sm:text-2xl font-black text-white text-glow">لوحة الإدارة الشاملة (V4.1)</h2>
+                            <p class="text-xs sm:text-sm text-indigo-300 mt-1">المصفوفة، المناهج، التوليد العشوائي، والألغاز</p>
+                        </div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <button type="button" onclick="previewQuiz()" class="bg-indigo-700 hover:bg-indigo-600 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 cursor-pointer shadow-md"><i class="fa-solid fa-eye"></i> معاينة</button>
-                        <button type="button" onclick="logoutAdmin()" class="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 text-sm font-bold px-4 py-2.5 rounded-xl transition cursor-pointer shadow-sm"><i class="fa-solid fa-arrow-right-from-bracket ml-1"></i> خروج</button>
+                        <button type="button" onclick="previewQuiz()" class="bg-indigo-700 hover:bg-indigo-600 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition flex items-center gap-2 cursor-pointer shadow-md">
+                            <i class="fa-solid fa-eye"></i> معاينة
+                        </button>
+                        <button type="button" onclick="logoutAdmin()" class="bg-red-500/20 hover:bg-red-500/30 text-red-300 border border-red-500/40 text-sm font-bold px-4 py-2.5 rounded-xl transition cursor-pointer shadow-sm">
+                            <i class="fa-solid fa-arrow-right-from-bracket ml-1"></i> خروج
+                        </button>
                     </div>
                 </div>
 
@@ -228,7 +338,7 @@
                                 <div><label class="block text-xs font-bold text-slate-300 mb-1">المدة (بالدقائق)</label><input type="number" id="admin-input-duration" class="w-full bg-slate-950 border border-slate-700 focus:border-indigo-500 p-3 rounded-xl text-sm text-white outline-none transition"></div>
                                 <div><label class="block text-xs font-bold text-slate-300 mb-1">حالة النشر</label><select id="admin-input-status" class="w-full bg-slate-950 border border-slate-700 focus:border-indigo-500 p-3 rounded-xl text-sm text-white outline-none transition cursor-pointer"><option value="published">منشور للطلاب</option><option value="draft">مسودة (غير متاح)</option><option value="closed">مغلق</option></select></div>
                             </div>
-                            <div><label class="block text-xs font-bold text-slate-300 mb-1">الرقم السري للإدارة</label><input type="password" id="admin-input-newpass" placeholder="اتركه فارغاً للحفاظ على القديم" class="w-full bg-slate-950 border border-slate-700 focus:border-indigo-500 p-3 rounded-xl text-sm text-white outline-none transition"></div>
+                            <div><label class="block text-xs font-bold text-slate-300 mb-1">الرقم السري للإدارة (اتركه فارغاً للحفاظ على القديم)</label><input type="password" id="admin-input-newpass" placeholder="••••••••" class="w-full bg-slate-950 border border-slate-700 focus:border-indigo-500 p-3 rounded-xl text-sm text-white outline-none transition"></div>
                         </div>
                         <div class="md:col-span-2 space-y-3 bg-slate-900/50 p-5 rounded-2xl border border-indigo-500/20">
                             <label class="block text-sm font-bold text-indigo-300">رابط صورة غلاف المنصة</label>
@@ -313,19 +423,19 @@
                 <!-- ADMIN CURRICULUM -->
                 <div id="admin-tab-curriculum" class="admin-tab-content space-y-5 hidden text-right">
                     <div class="bg-slate-900/80 p-5 rounded-2xl border border-indigo-500/30">
-                        <h4 class="font-bold text-base text-indigo-300 mb-3"><i class="fa-solid fa-layer-group ml-1"></i> 1. إدارة وحدات المنهج</h4>
+                        <h4 class="font-bold text-indigo-300 mb-3"><i class="fa-solid fa-layer-group ml-1"></i> 1. إدارة وحدات المنهج</h4>
                         <div class="flex gap-2 mb-4">
-                            <input type="text" id="new-unit-name" placeholder="اسم الوحدة الجديدة..." class="flex-1 bg-slate-800 border-slate-700 p-3 rounded-xl text-sm text-white focus:border-indigo-500 outline-none">
-                            <button onclick="adminAddUnit()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 rounded-xl text-sm font-bold transition">إضافة</button>
+                            <input type="text" id="new-unit-name" placeholder="اسم الوحدة الجديدة..." class="flex-1 bg-slate-800 border-slate-700 p-2.5 rounded-xl text-sm text-white focus:border-indigo-500 outline-none">
+                            <button onclick="adminAddUnit()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 rounded-xl text-sm font-bold transition">إضافة وحدة</button>
                         </div>
                         <div id="admin-units-list" class="flex flex-wrap gap-2"></div>
                     </div>
                     <div class="bg-slate-900/80 p-5 rounded-2xl border border-indigo-500/30">
-                        <h4 class="font-bold text-base text-indigo-300 mb-3"><i class="fa-solid fa-book-open ml-1"></i> 2. إدارة الدروس للوحدة المحددة</h4>
-                        <select id="curric-unit-select" class="w-full bg-slate-800 border-slate-700 p-3 rounded-xl text-sm text-white mb-4 outline-none" onchange="renderAdminCurriculumLessons()"></select>
+                        <h4 class="font-bold text-indigo-300 mb-3"><i class="fa-solid fa-book-open ml-1"></i> 2. إدارة الدروس للوحدة المحددة</h4>
+                        <select id="curric-unit-select" class="w-full bg-slate-800 border-slate-700 p-2.5 rounded-xl text-sm text-white mb-4 outline-none" onchange="renderAdminCurriculumLessons()"></select>
                         <div class="flex gap-2 mb-4">
-                            <input type="text" id="new-lesson-name" placeholder="اسم الدرس الجديد..." class="flex-1 bg-slate-800 border-slate-700 p-3 rounded-xl text-sm text-white outline-none">
-                            <button onclick="adminAddLesson()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 rounded-xl text-sm font-bold transition">إضافة</button>
+                            <input type="text" id="new-lesson-name" placeholder="اسم الدرس الجديد..." class="flex-1 bg-slate-800 border-slate-700 p-2.5 rounded-xl text-sm text-white outline-none">
+                            <button onclick="adminAddLesson()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 rounded-xl text-sm font-bold transition">إضافة درس</button>
                         </div>
                         <div id="admin-lessons-list" class="flex flex-wrap gap-2"></div>
                     </div>
@@ -394,7 +504,7 @@
                                 <select id="admin-q-correct" class="w-full bg-slate-800 border border-emerald-500/30 p-3 rounded-xl text-sm text-white outline-none"><option value="0">الخيار 1 (أ)</option><option value="1">الخيار 2 (ب)</option><option value="2">الخيار 3 (ج)</option><option value="3">الخيار 4 (د)</option></select>
                             </div>
                             <div><label class="block text-xs font-bold text-indigo-300 mb-2">درجة السؤال:</label><input type="number" id="admin-q-points" value="1" min="1" class="w-full bg-slate-800 border-slate-700 p-3 rounded-xl text-sm text-white font-bold text-center outline-none"></div>
-                            <div><label class="block text-xs font-bold text-indigo-300 mb-2" id="admin-exp-label">نموذج الإجابة/الشرح:</label><input type="text" id="admin-q-explanation" placeholder="توضيح الإجابة..." class="w-full bg-slate-800 border border-indigo-500/30 p-3 rounded-xl text-sm text-white outline-none"></div>
+                            <div><label class="block text-xs font-bold text-amber-300 mb-2" id="admin-exp-label">نموذج الإجابة/الشرح:</label><input type="text" id="admin-q-explanation" placeholder="توضيح الإجابة..." class="w-full bg-slate-800 border border-amber-500/30 p-3 rounded-xl text-sm text-white outline-none"></div>
                         </div>
                         
                         <div class="flex gap-3 pt-3 border-t border-indigo-500/20">
@@ -698,7 +808,6 @@
             if (!DB.config.units || DB.config.units.length === 0) DB.config.units = ['الوحدة الأولى'];
             if (!DB.config.lessons) DB.config.lessons = { 'الوحدة الأولى': ['الدرس الأول'] };
             
-            // تحويل qTargets إلى النظام الشبكي (Matrix) إذا كانت بالنظام القديم
             const tList = ['mcq', 'true_false', 'complete', 'correct_error', 'essay', 'map', 'puzzle'];
             if (!DB.config.qTargets) DB.config.qTargets = {};
             tList.forEach(t => {
@@ -944,7 +1053,6 @@
             navigateTo('screen-result');
         }
 
-        // --- محرك السحب بالـ Matrix (المتوسط/الصعب/التعجيزي) ---
         function getSampledQuestions() {
             const targets = DB.config.qTargets || {};
             const studentUnit = document.getElementById('student-unit') ? document.getElementById('student-unit').value : 'شامل المنهج';
@@ -1303,7 +1411,7 @@
 
         async function importBulkQuestions() {
             const rawText = document.getElementById('admin-bulk-input').value; const unit = document.getElementById('bulk-q-unit').value; const lesson = document.getElementById('bulk-q-lesson').value;
-            const fallbackDiff = document.getElementById('bulk-q-difficulty').value;
+            const fallbackDiff = document.getElementById('bulk-q-difficulty') ? document.getElementById('bulk-q-difficulty').value : 'medium';
             if (!rawText.trim() || !lesson) { showToast('يرجى تحديد الوحدة والدرس ولصق الأسئلة!', 'fa-exclamation-triangle', true); return; }
 
             const cleanInput = rawText.replace(/[\u200B-\u200F\u202A-\u202E\uFEFF]/g, ''); const lines = cleanInput.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
@@ -1354,17 +1462,18 @@
 
         async function importJSONQuestions() {
             const rawText = document.getElementById('admin-bulk-input').value.trim(); const unit = document.getElementById('bulk-q-unit').value; const lesson = document.getElementById('bulk-q-lesson').value;
+            const fallbackDiff = document.getElementById('bulk-q-difficulty') ? document.getElementById('bulk-q-difficulty').value : 'medium';
             if (!rawText || !lesson) { showToast('يرجى لصق كود الـ JSON وتحديد الوحدة والدرس!', 'fa-exclamation-triangle', true); return; }
             try {
                 const parsedQuestions = JSON.parse(rawText); if (!Array.isArray(parsedQuestions)) throw new Error("يجب أن يكون الكود مصفوفة.");
                 let count = 0;
                 parsedQuestions.forEach((q, idx) => {
                     if (q.text) {
-                        DB.questions.push({ id: 'q_json_' + Date.now() + '_' + idx, unit: unit, lesson: lesson, type: q.type || 'mcq', difficulty: q.difficulty || 'medium', text: cleanQuestionTextDisplay(q.text), options: q.options || [], correctText: q.correctText || (q.type === 'true_false' ? 'صح' : ''), explanation: q.explanation || '', image: q.image || '', points: q.points || (q.type === 'essay' || q.type === 'map' || q.type === 'puzzle' ? 5 : 1), archived: false });
+                        DB.questions.push({ id: 'q_json_' + Date.now() + '_' + idx, unit: unit, lesson: lesson, type: q.type || 'mcq', difficulty: q.difficulty || fallbackDiff, text: cleanQuestionTextDisplay(q.text), options: q.options || [], correctText: q.correctText || (q.type === 'true_false' ? 'صح' : ''), explanation: q.explanation || '', image: q.image || '', points: q.points || (q.type === 'essay' || q.type === 'map' || q.type === 'puzzle' ? 5 : 1), archived: false });
                         count++;
                     }
                 });
-                if (count > 0) { document.getElementById('admin-bulk-input').value = ''; await saveDatabase(); document.getElementById('filter-q-unit').value = unit; updateFilterLesson(); document.getElementById('filter-q-lesson').value = lesson; renderAdminQuestions(); updateSmartCounters(); showToast(`تم استيراد ${count} سؤال بنجاح!`, 'fa-check'); switchAdminTab('questions'); } else { showToast('لم يتم العثور على أسئلة صالحة.', 'fa-ban', true); }
+                if (count > 0) { document.getElementById('admin-bulk-input').value = ''; await saveDatabase(); document.getElementById('filter-q-unit').value = unit; updateFilterLesson(); document.getElementById('filter-q-lesson').value = lesson; renderAdminQuestions(); updateSmartCounters(); showToast(`تم استيراد ${count} سؤال من JSON بنجاح!`, 'fa-check'); switchAdminTab('questions'); } else { showToast('لم يتم العثور على أسئلة صالحة.', 'fa-ban', true); }
             } catch (e) { showToast('خطأ في صيغة JSON!', 'fa-bug', true); }
         }
 
@@ -1474,7 +1583,7 @@
 
             submissionsList.forEach(s => {
                 const tr = document.createElement('tr');
-                tr.innerHTML = `<td class="p-4 font-bold text-white wrap-safe">${s.name}</td><td class="p-4 text-emerald-400 font-bold"><i class="fa-solid fa-lock text-slate-500 mr-1"></i> أتم الاختبار</td><td class="p-4 text-slate-400 font-mono text-sm">مكتمل</td><td class="p-4 text-center"><button type="button" onclick="resetStudentSubmission('${s.id}')" class="bg-red-900/40 text-red-300 border border-red-500/40 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-red-600 hover:text-white transition cursor-pointer shadow"><i class="fa-solid fa-rotate-left ml-1"></i> مسح التسليم وإتاحة الإعادة</button></td>`;
+                tr.innerHTML = `<td class="p-4 font-bold text-white wrap-safe">${s.name}</td><td class="p-4 text-emerald-400 font-bold"><i class="fa-solid fa-lock text-slate-500 mr-1"></i> أتم الاختبار (محجوب)</td><td class="p-4 text-slate-400 font-mono text-sm">مكتمل</td><td class="p-4 text-center"><button type="button" onclick="resetStudentSubmission('${s.id}')" class="bg-red-900/40 text-red-300 border border-red-500/40 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-red-600 hover:text-white transition cursor-pointer shadow"><i class="fa-solid fa-rotate-left ml-1"></i> مسح التسليم وإتاحة الإعادة</button></td>`;
                 tbody.appendChild(tr);
             });
         }
